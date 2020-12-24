@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useState } from 'react';
+import Formulario from './Components/Formulario';
 
 function App() {
+
+  /* State Del Arreglo De Las Citas Creadas */
+  const [citas, guardarCitas] = useState([]);
+
+  /* Funciòn Que Tome Las Citas Actuales Y Agregue La Nueva Cita Entrante */
+  const crearCita = cita => {
+    guardarCitas([
+      ...citas,
+      cita
+    ]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <h1>Administrador De Pacientes</h1>
+
+      <div className="container">
+        <div className="row">
+          <div className="one-half column">
+            <Formulario 
+              crearCita={crearCita}
+            />
+          </div>
+
+          <div className="one-half column">
+            2
+          </div>
+        </div>
+      </div>
+    </Fragment>
   );
 }
 
